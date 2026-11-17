@@ -40,7 +40,9 @@ function PersonalizedPerfume() {
             <img
               src={EngravingBanner}
               alt="Custom Perfume Engraving Live"
-              className="w-full h-full object-cover min-h-[480px] lg:min-h-full"
+              // FIX: object-left anchors text to the screen edge on mobile. 
+              // Reduced mobile min-height to 300px prevents extreme cropping.
+              className="w-full h-full object-cover object-left md:object-center min-h-[300px] md:min-h-[480px] lg:min-h-full"
             />
           </div>
         </div>

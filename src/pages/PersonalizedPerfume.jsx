@@ -22,7 +22,9 @@ function PersonalizedPerfume() {
 
   // Active preview product image
   const selectedProduct = products.find((p) => p.id === selectedPerfumeId) || products[0];
-  const unitPrice = (selectedProduct?.price || 2000) + 250; // Base price + ₹250 engraving fee
+  
+  // FIX: Wrapped the price in Number() to prevent string concatenation (e.g. "2500" + 250 = "2500250")
+  const unitPrice = Number(selectedProduct?.price || 2000) + 250; 
 
   const handleAddToCart = () => {
     if (!selectedProduct) return;

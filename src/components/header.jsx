@@ -48,7 +48,7 @@ export function Header() {
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
     (item.notes && item.notes.toLowerCase().includes(searchQuery.toLowerCase())) ||
-    item.usage.toLowerCase().includes(searchQuery.toLowerCase())
+    (item.usage && item.usage.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -103,15 +103,6 @@ export function Header() {
             <FiSearch className="w-8 h-7 hover:text-[#9b6b80] transition" />
           </button>
 
-          {/* <Link
-            to="/admin"
-            title="Admin Login"
-            aria-label="Admin Dashboard"
-            className="hover:text-[#9b6b80] transition"
-          >
-            <FiUser className="w-8 h-7 cursor-pointer" />
-          </Link> */}
-
           <button
             onClick={() => setCartOpen(true)}
             className="relative cursor-pointer hover:text-[#9b6b80] transition"
@@ -126,7 +117,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu Dropdown (Positioned directly under the sticky header) */}
+        {/* Mobile Menu Dropdown */}
         {menuOpen && (
           <nav ref={menuRef} className="absolute top-full left-0 w-full bg-white border-b shadow-lg lg:hidden">
             <ul className="px-5 py-3 w-full text-3xl font-outfit">
@@ -147,7 +138,7 @@ export function Header() {
         )}
       </section>
 
-      {/* Interactive Search Modal / Overlay */}
+      {/* Interactive Search Modal */}
       {searchOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex flex-col items-center pt-20 px-4 font-outfit"
@@ -345,16 +336,13 @@ export function Header() {
 
                 <a
                   href={`https://wa.me/918122993247?text=${encodeURIComponent(
-                    `Hello Zayd Blends! I would like to order:\n` +
-                      cart
-                        .map(
-                          (i) =>
-                            `- ${i.name} (${i.option}) x${i.qty} ${
-                              i.freeQty > 0 ? `(${i.freeQty} free)` : ""
-                            } = ₹${i.paidQty * i.price}`
-                        )
-                        .join("\n") +
-                      `\nSubtotal: ₹${calculatedSubtotal}` +
+                    `Hello Zayd Blends! I would like to order:\n\n` +
+                      cart.map((i) =>
+                          `- ${i.name} (${i.option}) x${i.qty} ${
+                            i.freeQty > 0 ? `(${i.freeQty} free)` : ""
+                          } = ₹${i.paidQty * i.price}`
+                        ).join("\n") +
+                      `\n\nSubtotal: ₹${calculatedSubtotal}` +
                       (calculatedDiscount > 0
                         ? `\nPromo Discount: -₹${calculatedDiscount}`
                         : "") +

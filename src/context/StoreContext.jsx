@@ -12,7 +12,7 @@ export const StoreProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   // YOUR LIVE RENDER URL
-  const BACKEND_URL = "https://zayd-blends-backend.onrender.com/api"; // Make sure this is your actual Render link
+  const BACKEND_URL = "https://zayd-blend-ecommerce.onrender.com/api"; // Make sure this is your actual Render link
 
   // 1. Fetch products from the live database
   useEffect(() => {

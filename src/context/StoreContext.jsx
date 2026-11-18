@@ -10,8 +10,8 @@ export const StoreProvider = ({ children }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   // YOUR LIVE RENDER URL
-  const BACKEND_URL = "https://zayd-blend-ecommerce.onrender.com/api"; 
-
+  const BACKEND_URL = `${import.meta.env.VITE_BACKEND_URL}/api`;
+  
   // --- CART STATE WITH LOCAL STORAGE ---
   // Initialize cart from browser memory so it survives page refreshes
   const [cart, setCart] = useState(() => {

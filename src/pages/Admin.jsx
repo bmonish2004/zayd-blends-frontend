@@ -7,7 +7,7 @@ function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => sessionStorage.getItem("zayd_admin_auth") === "true"
   );
-  
+
   // Auth Views: "login" | "forgot_request" | "forgot_verify"
   const [authView, setAuthView] = useState("login");
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ function Admin() {
     e.preventDefault();
     setAuthError(""); setAuthSuccess(""); setLoading(true);
     try {
-      const response = await fetch("https://zayd-blend-ecommerce.onrender.com/api/admin-login", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin-login`, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
@@ -80,7 +80,7 @@ function Admin() {
     setAuthError(""); setAuthSuccess("");
     if (newPassword.length < 6) return setAuthError("Password must be at least 6 characters.");
     if (newPassword !== confirmPassword) return setAuthError("Passwords do not match.");
-    
+
     setLoading(true);
     try {
       const response = await fetch("https://zayd-blend-ecommerce.onrender.com/api/admin-reset-otp", {
@@ -113,7 +113,7 @@ function Admin() {
         const canvas = document.createElement("canvas");
         const MAX_WIDTH = 500; const MAX_HEIGHT = 500;
         let width = img.width; let height = img.height;
-        if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
+        if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } }
         else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
         canvas.width = width; canvas.height = height;
         const ctx = canvas.getContext("2d");
@@ -247,7 +247,7 @@ function Admin() {
             <h2 className="font-serif text-2xl text-[#211b1d] mb-5">Add New Perfume</h2>
             {productSuccess && <div className="bg-green-50 text-green-700 text-xs px-3.5 py-2.5 rounded-lg mb-4 border border-green-200">{productSuccess}</div>}
             {productError && <div className="bg-red-50 text-red-600 text-xs px-3.5 py-2.5 rounded-lg mb-4 border border-red-200">{productError}</div>}
-            
+
             <form onSubmit={handleCreate} className="space-y-4">
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gray-600 mb-1">Scent Category *</label>

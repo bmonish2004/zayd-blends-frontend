@@ -3,7 +3,7 @@ import musk from "../../src/assets/musk.jpeg";
 import Fruity from "../../src/assets/Forbidden_Bloom.jpeg";
 import Fresh from "../../src/assets/Aqua_Dawn.jpeg";
 import sweet from "../../src/assets/Baked_Vanilla.jpeg";
-import Banner from "../assets/banner1.png"
+import Banner from "../assets/banner3.jpeg"
 import heroImage from "../assets/About_hero.png";
 import { Link } from "react-router-dom";
 

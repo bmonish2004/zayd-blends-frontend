@@ -137,9 +137,9 @@ export const StoreProvider = ({ children }) => {
 
     let calculatedDiscount = 0;
 
-    // Apply Buy 2 Get 1 Free (Every 3rd item is free)
+   // Apply Buy 3 Get 1 Free (Every 4th item is free)
     allItems.forEach((item, index) => {
-      if ((index + 1) % 3 === 0) {
+      if ((index + 1) % 4 === 0) {
         calculatedDiscount += item.price;
         processedCart[item.cartIndex].freeQty += 1;
         processedCart[item.cartIndex].paidQty -= 1;

@@ -12,8 +12,8 @@ function ComboOffer() {
     if (selectedBundleIds.includes(productId)) {
       setSelectedBundleIds(selectedBundleIds.filter((id) => id !== productId));
     } else {
-      if (selectedBundleIds.length >= 3) {
-        setErrorMsg("You can select up to 3 perfumes for the Buy 2 Get 1 Free combo.");
+      if (selectedBundleIds.length >= 4) {
+        setErrorMsg("You can select up to 4 perfumes for the Buy 3 Get 1 Free combo.");
         return;
       }
       setSelectedBundleIds([...selectedBundleIds, productId]);
@@ -21,8 +21,8 @@ function ComboOffer() {
   };
 
   const handleAddBundleToCart = () => {
-    if (selectedBundleIds.length !== 3) {
-      setErrorMsg("Please select exactly 3 perfumes to complete your Buy 2 Get 1 Free bundle.");
+    if (selectedBundleIds.length !== 4) {
+      setErrorMsg("Please select exactly 4 perfumes to complete your Buy 3 Get 1 Free bundle.");
       return;
     }
 
@@ -45,10 +45,10 @@ function ComboOffer() {
           INTERACTIVE BUNDLE OFFER
         </p>
         <h1 className="font-serif text-4xl md:text-6xl mb-4">
-          Select Any 2, Get 1 Free
+          Select Any 3, Get 1 Free
         </h1>
         <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto font-light leading-relaxed">
-          Choose <span className="font-semibold text-[#e9b5c5]">3 perfumes</span> below of your choice. The lowest-priced bottle will automatically become 100% free!
+          Choose <span className="font-semibold text-[#e9b5c5]">4 perfumes</span> below of your choice. The lowest-priced bottle will automatically become 100% free!
         </p>
       </section>
 
@@ -60,14 +60,14 @@ function ComboOffer() {
               Selected Bundle:
             </span>{" "}
             <span className="font-semibold text-sm">
-              {selectedBundleIds.length} / 3 items chosen
+              {selectedBundleIds.length} / 4 items chosen
             </span>
           </div>
 
           <button
             onClick={handleAddBundleToCart}
             className={`px-8 py-3 rounded-xl text-xs tracking-[0.2em] uppercase font-semibold transition cursor-pointer ${
-              selectedBundleIds.length === 3
+              selectedBundleIds.length === 4
                 ? "bg-[#260b19] text-white hover:bg-[#4b101f]"
                 : "bg-gray-200 text-gray-500 hover:bg-gray-300"
             }`}

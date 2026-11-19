@@ -324,7 +324,7 @@ export function Header() {
                   </div>
                   {calculatedDiscount > 0 && (
                     <div className="flex justify-between text-green-700 font-medium">
-                      <span>Buy 2 Get 1 Free Discount</span>
+                      <span>Buy 3 Get 1 Free Discount</span>
                       <span>-₹{calculatedDiscount.toLocaleString("en-IN")}</span>
                     </div>
                   )}
